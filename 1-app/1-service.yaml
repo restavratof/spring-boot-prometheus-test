@@ -1,0 +1,17 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: df1
+  namespace: df-java
+  labels:
+    app: df1
+spec:
+  type: ClusterIP
+  ports:
+  - name: http
+    port: 5000
+    protocol: TCP
+    targetPort: http
+  selector:
+    app: df1

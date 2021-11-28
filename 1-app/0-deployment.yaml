@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: df1
+  namespace: df-java
+spec:
+  selector:
+    matchLabels:
+      app: df1
+  template:
+    metadata:
+      labels:
+        app: df1
+    spec:
+      containers:
+      - image: restavratof/flask-image:gunicorn
+        name: df1
+        ports:
+        - name: http
+          containerPort: 5000
+        resources:
+          limits:
+            cpu: 500m
+            memory: 256Mi
+
+          requests:
+            cpu: 200m
+            memory: 128Mi

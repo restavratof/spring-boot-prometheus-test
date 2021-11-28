@@ -1,0 +1,18 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: df1
+  namespace: df-java
+  labels:
+    team: devops
+spec:
+  endpoints:
+  - port: http
+    interval: 15s
+  namespaceSelector:
+    matchNames:
+    - df-java
+  selector:
+    matchLabels:
+      app: df1
